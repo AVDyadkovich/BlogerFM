@@ -11,20 +11,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var statusMenu: NSMenu!
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
-
-    @IBAction func quit(_ sender: NSMenuItem) {
-        NSApplication.shared().terminate(self)
-    }
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        let icon = NSImage(named:"status")
-        icon?.isTemplate = true
-        statusItem.image = icon
-        statusItem.menu = statusMenu
         
     }
 
