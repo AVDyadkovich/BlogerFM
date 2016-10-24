@@ -17,10 +17,19 @@
         <customObject id="qPS-hW-7ef" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="BlogerFM_2" customModuleProvider="target">
             <connections>
                 <outlet property="statusMenu" destination="cfp-Yq-dKC" id="PNA-tz-HbM"/>
+                <outlet property="volumeBarOutlet" destination="UiP-TX-fKh" id="B8P-DX-Ps1"/>
             </connections>
         </customObject>
         <menu id="cfp-Yq-dKC">
             <items>
+                <menuItem title="Item" id="Yec-Fn-Inv">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="tVI-oR-j5h"/>
+                <menuItem title="volumeBar" id="9wv-qh-BDN">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="m7A-Qx-wHk"/>
                 <menuItem title="Quit" id="uax-eC-xoe">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -29,5 +38,14 @@
                 </menuItem>
             </items>
         </menu>
+        <slider verticalHuggingPriority="750" id="UiP-TX-fKh">
+            <rect key="frame" x="0.0" y="0.0" width="140" height="23"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="0.51139049369747902" tickMarkPosition="above" sliderType="linear" id="e28-Zz-r3r"/>
+            <connections>
+                <action selector="volumeBar:" target="qPS-hW-7ef" id="kxR-GU-NaK"/>
+            </connections>
+            <point key="canvasLocation" x="-25" y="-62.5"/>
+        </slider>
     </objects>
 </document>
