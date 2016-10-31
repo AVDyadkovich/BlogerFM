@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -16,13 +17,18 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="qPS-hW-7ef" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="BlogerFM_2" customModuleProvider="target">
             <connections>
+                <outlet property="playPauseButtonOutlet" destination="BXv-Rt-bGO" id="uhN-bb-HL1"/>
+                <outlet property="playPauseOutlet" destination="R41-Sw-1un" id="3lY-kr-yD9"/>
                 <outlet property="statusMenu" destination="cfp-Yq-dKC" id="PNA-tz-HbM"/>
                 <outlet property="volumeBarOutlet" destination="UiP-TX-fKh" id="B8P-DX-Ps1"/>
             </connections>
         </customObject>
         <menu id="cfp-Yq-dKC">
             <items>
-                <menuItem title="Item" id="Yec-Fn-Inv">
+                <menuItem title="Item" id="mAZ-Cv-whK">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="PlayPauseBar" id="Yec-Fn-Inv">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="tVI-oR-j5h"/>
@@ -47,5 +53,26 @@
             </connections>
             <point key="canvasLocation" x="-25" y="-62.5"/>
         </slider>
+        <customView id="R41-Sw-1un" userLabel="PausePlayView">
+            <rect key="frame" x="0.0" y="0.0" width="143" height="34"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" fixedFrame="YES" mirrorLayoutDirectionWhenInternationalizing="never" translatesAutoresizingMaskIntoConstraints="NO" id="vQD-kC-oVi">
+                    <rect key="frame" x="51" y="7" width="40" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Play" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="BXv-Rt-bGO">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="playPauseButton:" target="qPS-hW-7ef" id="WHW-1D-Jh2"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="-21.5" y="16"/>
+        </customView>
     </objects>
+    <resources>
+        <image name="Play" width="32" height="32"/>
+    </resources>
 </document>

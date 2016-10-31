@@ -10,11 +10,11 @@ import Foundation
 import CoreAudioKit
 import AVFoundation
 
-var url = "http://radio.bloger.fm:8000/blogerfm-256"
+var url256 = "http://radio.bloger.fm:8000/blogerfm-256"
 
-var testUrl1 = URL(string: url)
+var blogerFMUrl256 = URL(string: url256)
 
-var asset = AVURLAsset(url: testUrl1!)
+var asset = AVURLAsset(url: blogerFMUrl256!)
 
 var blogerPlayerItem = AVPlayerItem(asset: asset)
 
