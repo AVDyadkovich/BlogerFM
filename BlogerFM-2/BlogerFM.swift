@@ -10,15 +10,24 @@ import Foundation
 import CoreAudioKit
 import AVFoundation
 
-var url256 = "http://radio.bloger.fm:8000/blogerfm-256"
+// Url of radio stream:
 
-var blogerFMUrl256 = URL(string: url256)
+enum BlogerFMUrl: String{
+    case url256 = "http://radio.bloger.fm:8000/blogerfm-256"
+    case url128 = "http://radio.bloger.fm:8000/blogerfm-128"
+}
 
-var asset = AVURLAsset(url: blogerFMUrl256!)
+//var url256 = "http://radio.bloger.fm:8000/blogerfm-256"
 
-var blogerPlayerItem = AVPlayerItem(asset: asset)
+var blogerFMUrl = URL(string: BlogerFMUrl.url256.rawValue)
+
+//var blogerFMUrl = blogerFMUrl256
+
+//var asset = AVURLAsset(url: blogerFMUrl256!)
+
+
+//Initialize of player with Item
+
+var blogerPlayerItem = AVPlayerItem(url: blogerFMUrl!)
 
 var blogerFM = AVPlayer(playerItem: blogerPlayerItem)
-
-
-
