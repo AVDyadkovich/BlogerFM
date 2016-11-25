@@ -36,8 +36,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="m7A-Qx-wHk"/>
-                <menuItem title="Quit" id="uax-eC-xoe">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="Preferences" keyEquivalent="`" id="7C6-1c-9x5">
+                    <connections>
+                        <action selector="blogerPreferencessAction:" target="qPS-hW-7ef" id="DVV-Tw-Ae8"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" keyEquivalent="q" id="uax-eC-xoe">
                     <connections>
                         <action selector="quit:" target="qPS-hW-7ef" id="cDl-Ig-0eR"/>
                     </connections>

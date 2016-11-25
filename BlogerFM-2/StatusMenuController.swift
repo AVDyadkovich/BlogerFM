@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVFoundation
 
 class StatusMenuController: NSObject {
    // Initializing Outlets, Menus, Values
@@ -14,15 +15,18 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var volumeBarOutlet: NSSlider!
     @IBOutlet weak var playPauseOutlet: NSView!
     @IBOutlet weak var playPauseButtonOutlet: NSButtonCell!
+  
     
     var volumeBarMenu:NSMenuItem!
     var playPauseMenu:NSMenuItem!
+    var preferencesWindow: PreferencesWindowController!
 
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
     override func awakeFromNib() {
         let icon = NSImage(named:"status")
         icon?.isTemplate = true
+        preferencesWindow = PreferencesWindowController()
         statusItem.image = icon
         statusItem.menu = statusMenu
         volumeBarMenu = statusMenu.item(withTitle: "volumeBar")
@@ -40,10 +44,10 @@ class StatusMenuController: NSObject {
         blogerFM.volume = volumeBarOutlet.floatValue
         playPauseMenu = statusMenu.item(withTitle: "PlayPauseBar")
         playPauseMenu.view = playPauseOutlet
-        blogerFM.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
-        blogerFM.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
-        blogerFM.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
-       
+        print(blogerFM.currentItem?.timedMetadata ?? "nothing")
+      
+       addBlogerObservers()
+        
     }
     
     @IBAction func volumeBar(_ sender: NSSlider) {
@@ -68,13 +72,24 @@ class StatusMenuController: NSObject {
         }
         
     }
+    @IBAction func blogerPreferencessAction(_ sender: NSMenuItem) {
+        if preferencesWindow.isWindowLoaded{
+         //   preferencesWindow.close()
+            preferencesWindow.windowDidLoad()
+        }else{
+        removeBlogerObservers()
+        preferencesWindow.showWindow(nil)
+        }
+    }
     
     
     @IBAction func quit(_ sender: NSMenuItem) {
         UserDefaults.standard.set(blogerFM.volume, forKey: "volume")
         NSApplication.shared().terminate(self)
+        
     }
 
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard keyPath != nil else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
@@ -89,6 +104,7 @@ class StatusMenuController: NSObject {
         case "playbackLikelyToKeepUp" :
             if blogerFM.currentItem!.isPlaybackLikelyToKeepUp {
                 print("resume Play")
+                
             }
         case "status" :
             print (change!)
@@ -97,10 +113,22 @@ class StatusMenuController: NSObject {
             print ("test")
         }
     }
+    
     deinit {
-        self.removeObserver(self, forKeyPath: "playbackBufferEmpty")
-        self.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
-        self.removeObserver(self, forKeyPath: "status")
+        removeBlogerObservers()
     }
-
+    func removeBlogerObservers () {
+        blogerFM.currentItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
+        blogerFM.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+        blogerFM.currentItem?.removeObserver(self, forKeyPath: "status")
+        print("remove")
+    }
+    
+    func addBlogerObservers() {
+        blogerFM.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
+        blogerFM.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
+        blogerFM.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
+    }
+    
+    
 }
