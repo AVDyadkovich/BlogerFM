@@ -27,7 +27,7 @@ class PreferencesWindowController: NSWindowController {
         
     }
     @IBAction func SaveButton(_ sender: NSButton) {
-   //     blogerFM.currentItem?.removeObserver(StatusMenuController.self() , forKeyPath: "playbackBufferEmpty")
+ 
         ratePreference = (changeRate.selectedCell()?.title)!
         restartBloger()
         print(blogerFMUrl!)

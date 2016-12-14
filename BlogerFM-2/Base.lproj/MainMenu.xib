@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
@@ -36,12 +36,20 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="m7A-Qx-wHk"/>
-                <menuItem title="Preferences" keyEquivalent="`" id="7C6-1c-9x5">
+                <menuItem title="Current Title" id="ZeH-t1-Z1q" userLabel="Current Title">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="CurrentTitle:" target="qPS-hW-7ef" id="UVW-X4-dIv"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Preferences" id="7C6-1c-9x5">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="blogerPreferencessAction:" target="qPS-hW-7ef" id="DVV-Tw-Ae8"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" keyEquivalent="q" id="uax-eC-xoe">
+                <menuItem title="Quit" id="uax-eC-xoe">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="quit:" target="qPS-hW-7ef" id="cDl-Ig-0eR"/>
                     </connections>
@@ -50,21 +58,21 @@
         </menu>
         <slider verticalHuggingPriority="750" id="UiP-TX-fKh">
             <rect key="frame" x="0.0" y="0.0" width="140" height="23"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="0.51139049369747902" tickMarkPosition="above" sliderType="linear" id="e28-Zz-r3r"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="e28-Zz-r3r"/>
             <connections>
                 <action selector="volumeBar:" target="qPS-hW-7ef" id="kxR-GU-NaK"/>
             </connections>
-            <point key="canvasLocation" x="-25" y="-62.5"/>
+            <point key="canvasLocation" x="8" y="-127"/>
         </slider>
         <customView id="R41-Sw-1un" userLabel="PausePlayView">
             <rect key="frame" x="0.0" y="0.0" width="143" height="34"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" fixedFrame="YES" mirrorLayoutDirectionWhenInternationalizing="never" translatesAutoresizingMaskIntoConstraints="NO" id="vQD-kC-oVi">
-                    <rect key="frame" x="51" y="7" width="40" height="19"/>
+                <button verticalHuggingPriority="750" misplaced="YES" mirrorLayoutDirectionWhenInternationalizing="never" id="vQD-kC-oVi">
+                    <rect key="frame" x="83" y="7" width="40" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Pause" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="BXv-Rt-bGO">
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Stop" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="BXv-Rt-bGO">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -72,11 +80,32 @@
                         <action selector="playPauseButton:" target="qPS-hW-7ef" id="WHW-1D-Jh2"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" misplaced="YES" id="tOy-to-jkw">
+                    <rect key="frame" x="11" y="7" width="25" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="era-EP-v0Y">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" id="dgs-6D-y5Q">
+                    <rect key="frame" x="11" y="7" width="25" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="UnMute" imagePosition="overlaps" alignment="center" alternateImage="Mute" imageScaling="proportionallyDown" inset="2" id="hJB-SC-qZz">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="muteButton:" target="qPS-hW-7ef" id="ZHo-7m-oeS"/>
+                    </connections>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="-21.5" y="16"/>
+            <point key="canvasLocation" x="-29.5" y="16"/>
         </customView>
     </objects>
     <resources>
-        <image name="Pause" width="32" height="32"/>
+        <image name="Mute" width="32" height="32"/>
+        <image name="Stop" width="32" height="32"/>
+        <image name="UnMute" width="32" height="32"/>
     </resources>
 </document>
