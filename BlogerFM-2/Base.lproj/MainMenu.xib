@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,15 +17,17 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="qPS-hW-7ef" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="BlogerFM_2" customModuleProvider="target">
             <connections>
+                <outlet property="muteButtonOutlet" destination="dgs-6D-y5Q" id="ZQd-xI-alq"/>
                 <outlet property="playPauseButtonOutlet" destination="BXv-Rt-bGO" id="uhN-bb-HL1"/>
                 <outlet property="playPauseOutlet" destination="R41-Sw-1un" id="3lY-kr-yD9"/>
                 <outlet property="statusMenu" destination="cfp-Yq-dKC" id="PNA-tz-HbM"/>
+                <outlet property="textOutlet" destination="F3E-Lz-U3B" id="tKL-nO-VIL"/>
                 <outlet property="volumeBarOutlet" destination="UiP-TX-fKh" id="B8P-DX-Ps1"/>
             </connections>
         </customObject>
         <menu id="cfp-Yq-dKC">
             <items>
-                <menuItem title="Item" id="mAZ-Cv-whK">
+                <menuItem title="text" id="mAZ-Cv-whK">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem title="PlayPauseBar" id="Yec-Fn-Inv">
@@ -70,7 +72,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" misplaced="YES" mirrorLayoutDirectionWhenInternationalizing="never" id="vQD-kC-oVi">
-                    <rect key="frame" x="83" y="7" width="40" height="20"/>
+                    <rect key="frame" x="96" y="7" width="25" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Stop" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="BXv-Rt-bGO">
                         <behavior key="behavior" lightByContents="YES"/>
@@ -80,16 +82,8 @@
                         <action selector="playPauseButton:" target="qPS-hW-7ef" id="WHW-1D-Jh2"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" id="tOy-to-jkw">
-                    <rect key="frame" x="11" y="7" width="25" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="era-EP-v0Y">
-                        <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" id="dgs-6D-y5Q">
-                    <rect key="frame" x="11" y="7" width="25" height="20"/>
+                <button verticalHuggingPriority="750" misplaced="YES" id="dgs-6D-y5Q">
+                    <rect key="frame" x="20" y="6" width="25" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="UnMute" imagePosition="overlaps" alignment="center" alternateImage="Mute" imageScaling="proportionallyDown" inset="2" id="hJB-SC-qZz">
                         <behavior key="behavior" lightByContents="YES"/>
@@ -102,6 +96,31 @@
             </subviews>
             <point key="canvasLocation" x="-29.5" y="16"/>
         </customView>
+        <tableCellView misplaced="YES" id="F3E-Lz-U3B">
+            <rect key="frame" x="0.0" y="0.0" width="145" height="20"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="8iy-E4-Rma">
+                    <rect key="frame" x="2" y="3" width="76" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mute/Unmute" id="neb-P3-qNO">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="USK-aC-kUV">
+                    <rect key="frame" x="82" y="1" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stop/Play" id="s5E-UN-7OV">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-29.5" y="-57"/>
+        </tableCellView>
     </objects>
     <resources>
         <image name="Mute" width="32" height="32"/>

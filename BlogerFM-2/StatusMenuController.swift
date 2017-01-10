@@ -15,17 +15,21 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var volumeBarOutlet: NSSlider!
     @IBOutlet weak var playPauseOutlet: NSView!
     @IBOutlet weak var playPauseButtonOutlet: NSButtonCell!
-  
+    @IBOutlet weak var muteButtonOutlet: NSButton!
+    @IBOutlet weak var textOutlet: NSTableCellView!
     
     var volumeBarMenu:NSMenuItem!
     var playPauseMenu:NSMenuItem!
     var preferencesWindow: PreferencesWindowController!
     var titleMenu: NSMenuItem!
-    let notification = NSUserNotification.init()
+    var textCell:NSMenuItem!
 
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
     override func awakeFromNib() {
+        if UserDefaults.standard.string(forKey: "rate") == nil{
+            UserDefaults.standard.set(128, forKey:"rate")
+        }
         let icon = NSImage(named:"status")
         icon?.isTemplate = true
         preferencesWindow = PreferencesWindowController()
@@ -33,6 +37,8 @@ class StatusMenuController: NSObject {
         statusItem.menu = statusMenu
         volumeBarMenu = statusMenu.item(withTitle: "volumeBar")
         volumeBarMenu.view = volumeBarOutlet
+        textCell = statusMenu.item(withTitle: "text")
+        textCell.view = textOutlet
         blogerFM.play()
     
        
@@ -48,12 +54,26 @@ class StatusMenuController: NSObject {
     }
     
     @IBAction func volumeBar(_ sender: NSSlider) {
-        
+            if muteButtonOutlet.state == 1 {
+                let imgBut:NSImage? = NSImage(named: "UnMute")
+                muteButtonOutlet.image = imgBut
+                muteButtonOutlet.state = 0
+            }
         blogerFM.volume = volumeBarOutlet.floatValue
+        changeMute()
     }
+    func changeMute () {
+        if blogerFM.volume == 0.0{
+            let imgBut:NSImage? = NSImage(named: "Mute")
+            muteButtonOutlet.image = imgBut
+            muteButtonOutlet.state = 1
+        }
+    }
+    
     
     @IBAction func CurrentTitle(_ sender: Any) {
         NSUserNotificationCenter.default.deliver(notification)
+     
     }
     @IBAction func playPauseButton(_ sender: NSButton) {
         
@@ -110,7 +130,9 @@ class StatusMenuController: NSObject {
     
     @IBAction func quit(_ sender: NSMenuItem) {
         UserDefaults.standard.set(blogerFM.volume, forKey: "volume")
+        UserDefaults.standard.set(ratePreference, forKey: "rate")
         NSApplication.shared().terminate(self)
+        
         
     }
 
@@ -120,41 +142,48 @@ class StatusMenuController: NSObject {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
             return
         }
+        var tempKeyPath: String
+        if keyPath == nil {
+            tempKeyPath = "nothing"
+        }else{
+            tempKeyPath = keyPath!
+        }
         
-        switch keyPath! {
+        switch tempKeyPath {
         case "playbackBufferEmpty" :
             if blogerFM.currentItem!.isPlaybackBufferEmpty {
                 print("no buffer")
+                
             }
+            
         case "playbackLikelyToKeepUp" :
             if blogerFM.currentItem!.isPlaybackLikelyToKeepUp {
                 print("resume Play")
-                let test = blogerFM.currentItem?.asset.commonMetadata
-                for item in test!{
-                    print (item, item.commonKey ?? "nothing")
-                }
+     
               
             }
         case "status" :
             print (change!)
             print(blogerFM.currentItem?.status.rawValue ?? 3)
-        case "timedMetadata" :
             
-            for item in (blogerFM.currentItem!.timedMetadata)! as [AVMetadataItem]{
+        case "timedMetadata" :
+            if blogerFM.currentItem?.timedMetadata != nil {
+            for item in (blogerFM.currentItem?.timedMetadata)! as [AVMetadataItem]{
                 let data = String(describing: item.value!)
                 let encodeData = data.data(using: .isoLatin1)!
                 let decodeData = NSString(data: encodeData, encoding: String.Encoding.windowsCP1251.rawValue)!
-                notification.title = "BlogerFM"
-                notification.informativeText = String(decodeData)
-                notification.contentImage = NSImage(named: "status")
-                NSUserNotificationCenter.default.deliver(notification)
-                print ("Meta")
+                blogerNotification(notify: String(decodeData))
                 
+                }
+            } else {
+                blogerNotification(notify: NSLocalizedString("Error", comment: "Error has an accured"))
             }
         default:
             print ("Nothing here")
         }
     }
+    
+    
     
     deinit {
         removeBlogerObservers()
@@ -164,8 +193,6 @@ class StatusMenuController: NSObject {
         blogerFM.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
         blogerFM.currentItem?.removeObserver(self, forKeyPath: "status")
         blogerFM.currentItem?.removeObserver(self, forKeyPath: "timedMetadata")
-        
-        print("remove")
     }
     
     func addBlogerObservers() {
@@ -173,7 +200,7 @@ class StatusMenuController: NSObject {
         blogerFM.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
         blogerFM.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
         blogerFM.currentItem?.addObserver(self, forKeyPath: "timedMetadata", options: .new, context: nil)
+        
     }
-    
     
 }

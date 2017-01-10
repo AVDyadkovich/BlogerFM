@@ -11,7 +11,6 @@
 		5538AE9B1DBD58AF00C28C43 /* BlogerFM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538AE9A1DBD58AF00C28C43 /* BlogerFM.swift */; };
 		5550BF481DDF2DBF00E622AE /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5550BF461DDF2DBF00E622AE /* PreferencesWindowController.swift */; };
 		5550BF491DDF2DBF00E622AE /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5550BF471DDF2DBF00E622AE /* PreferencesWindowController.xib */; };
-		559330671DD60C1F0072D748 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559330661DD60C1F0072D748 /* Preferences.swift */; };
 		55EE5DEC1DB9490500D86D49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE5DEB1DB9490500D86D49 /* AppDelegate.swift */; };
 		55EE5DEE1DB9490500D86D49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EE5DED1DB9490500D86D49 /* Assets.xcassets */; };
 		55EE5DF11DB9490500D86D49 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EE5DEF1DB9490500D86D49 /* MainMenu.xib */; };
@@ -22,7 +21,6 @@
 		5538AE9A1DBD58AF00C28C43 /* BlogerFM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogerFM.swift; sourceTree = "<group>"; };
 		5550BF461DDF2DBF00E622AE /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		5550BF471DDF2DBF00E622AE /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
-		559330661DD60C1F0072D748 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		55EE5DE81DB9490500D86D49 /* BlogerFM-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BlogerFM-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55EE5DEB1DB9490500D86D49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55EE5DED1DB9490500D86D49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 				5538AE9A1DBD58AF00C28C43 /* BlogerFM.swift */,
 				5550BF461DDF2DBF00E622AE /* PreferencesWindowController.swift */,
 				5550BF471DDF2DBF00E622AE /* PreferencesWindowController.xib */,
-				559330661DD60C1F0072D748 /* Preferences.swift */,
 				55EE5DF21DB9490500D86D49 /* Info.plist */,
 			);
 			path = "BlogerFM-2";
@@ -148,7 +145,6 @@
 				552F37811DBA43EA00B60BAA /* StatusMenuController.swift in Sources */,
 				55EE5DEC1DB9490500D86D49 /* AppDelegate.swift in Sources */,
 				5550BF481DDF2DBF00E622AE /* PreferencesWindowController.swift in Sources */,
-				559330671DD60C1F0072D748 /* Preferences.swift in Sources */,
 				5538AE9B1DBD58AF00C28C43 /* BlogerFM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

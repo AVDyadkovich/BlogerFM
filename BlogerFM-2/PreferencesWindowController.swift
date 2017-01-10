@@ -21,16 +21,15 @@ class PreferencesWindowController: NSWindowController {
         super.windowDidLoad()
 
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+        changeRate.selectCell(withTag: Int(ratePreference)!)
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
         
     }
     @IBAction func SaveButton(_ sender: NSButton) {
- 
         ratePreference = (changeRate.selectedCell()?.title)!
         restartBloger()
-        print(blogerFMUrl!)
         self.close()
     }
     

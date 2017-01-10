@@ -1,0 +1,24 @@
+
+/* Class = "NSMenuItem"; title = "Preferences"; ObjectID = "7C6-1c-9x5"; */
+"7C6-1c-9x5.title" = "Preferences";
+
+/* Class = "NSMenuItem"; title = "volumeBar"; ObjectID = "9wv-qh-BDN"; */
+"9wv-qh-BDN.title" = "volumeBar";
+
+/* Class = "NSMenuItem"; title = "PlayPauseBar"; ObjectID = "Yec-Fn-Inv"; */
+"Yec-Fn-Inv.title" = "PlayPauseBar";
+
+/* Class = "NSMenuItem"; title = "Current Title"; ObjectID = "ZeH-t1-Z1q"; */
+"ZeH-t1-Z1q.title" = "Current Title";
+
+/* Class = "NSMenuItem"; title = "text"; ObjectID = "mAZ-Cv-whK"; */
+"mAZ-Cv-whK.title" = "text";
+
+/* Class = "NSTextFieldCell"; title = "Mute/Unmute"; ObjectID = "neb-P3-qNO"; */
+"neb-P3-qNO.title" = "Mute/Unmute";
+
+/* Class = "NSTextFieldCell"; title = "Stop/Play"; ObjectID = "s5E-UN-7OV"; */
+"s5E-UN-7OV.title" = "Stop/Play";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "uax-eC-xoe"; */
+"uax-eC-xoe.title" = "Quit";
