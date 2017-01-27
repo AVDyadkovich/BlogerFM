@@ -32,7 +32,6 @@ var blogerFMUrl = URL(string: changeRateUrl(rate: ratePreference))
 var blogerPlayerItem = AVPlayerItem(url: blogerFMUrl!)
 
 var blogerFM = AVPlayer(playerItem: blogerPlayerItem)
-
 func changeRateUrl (rate: String) -> String {
     switch rate{
         case "64": return BlogerFMUrl.url64.rawValue
@@ -56,3 +55,8 @@ func blogerNotification(notify:String) {
     notification.contentImage = NSImage(named: "status")
     NSUserNotificationCenter.default.deliver(notification)
 }
+
+
+
+
+

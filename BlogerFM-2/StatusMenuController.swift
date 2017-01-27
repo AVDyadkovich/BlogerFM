@@ -9,24 +9,23 @@
 import Cocoa
 import AVFoundation
 
-class StatusMenuController: NSObject {
+class StatusMenuController: NSObject{
    // Initializing Outlets, Menus, Values
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var volumeBarOutlet: NSSlider!
     @IBOutlet weak var playPauseOutlet: NSView!
     @IBOutlet weak var playPauseButtonOutlet: NSButtonCell!
     @IBOutlet weak var muteButtonOutlet: NSButton!
-    @IBOutlet weak var textOutlet: NSTableCellView!
     
     var volumeBarMenu:NSMenuItem!
     var playPauseMenu:NSMenuItem!
     var preferencesWindow: PreferencesWindowController!
     var titleMenu: NSMenuItem!
-    var textCell:NSMenuItem!
-
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    //end Initialization block.
     
     override func awakeFromNib() {
+        // Initializing and configuring app.
         if UserDefaults.standard.string(forKey: "rate") == nil{
             UserDefaults.standard.set(128, forKey:"rate")
         }
@@ -37,10 +36,8 @@ class StatusMenuController: NSObject {
         statusItem.menu = statusMenu
         volumeBarMenu = statusMenu.item(withTitle: "volumeBar")
         volumeBarMenu.view = volumeBarOutlet
-        textCell = statusMenu.item(withTitle: "text")
-        textCell.view = textOutlet
+        blogerFM.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
         blogerFM.play()
-    
        
         if UserDefaults.standard.float(forKey: "volume") != 0 {
         volumeBarOutlet.floatValue = UserDefaults.standard.float(forKey: "volume")
@@ -48,8 +45,7 @@ class StatusMenuController: NSObject {
         blogerFM.volume = volumeBarOutlet.floatValue
         playPauseMenu = statusMenu.item(withTitle: "PlayPauseBar")
         playPauseMenu.view = playPauseOutlet
-        
-       addBlogerObservers()
+        addBlogerObservers()
         
     }
     
@@ -88,7 +84,6 @@ class StatusMenuController: NSObject {
             let altImgBt:NSImage? = NSImage(named: "Play")
             sender.image = altImgBt
             blogerFM.replaceCurrentItem(with: nil)
-            //blogerFM.volume = 0.0
         default: break
         }
         
@@ -119,7 +114,6 @@ class StatusMenuController: NSObject {
     }
     @IBAction func blogerPreferencessAction(_ sender: NSMenuItem) {
         if preferencesWindow.isWindowLoaded{
-         //   preferencesWindow.close()
             preferencesWindow.windowDidLoad()
         }else{
         removeBlogerObservers()
@@ -152,19 +146,9 @@ class StatusMenuController: NSObject {
         switch tempKeyPath {
         case "playbackBufferEmpty" :
             if blogerFM.currentItem!.isPlaybackBufferEmpty {
-                print("no buffer")
+                blogerNotification(notify: NSLocalizedString("Buffer", comment: "Error has an accured"))
                 
             }
-            
-        case "playbackLikelyToKeepUp" :
-            if blogerFM.currentItem!.isPlaybackLikelyToKeepUp {
-                print("resume Play")
-     
-              
-            }
-        case "status" :
-            print (change!)
-            print(blogerFM.currentItem?.status.rawValue ?? 3)
             
         case "timedMetadata" :
             if blogerFM.currentItem?.timedMetadata != nil {
@@ -177,12 +161,12 @@ class StatusMenuController: NSObject {
                 }
             } else {
                 blogerNotification(notify: NSLocalizedString("Error", comment: "Error has an accured"))
+
             }
         default:
-            print ("Nothing here")
+            print ("Wrong key for observer")
         }
     }
-    
     
     
     deinit {
@@ -190,15 +174,11 @@ class StatusMenuController: NSObject {
     }
     func removeBlogerObservers () {
         blogerFM.currentItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
-        blogerFM.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
-        blogerFM.currentItem?.removeObserver(self, forKeyPath: "status")
         blogerFM.currentItem?.removeObserver(self, forKeyPath: "timedMetadata")
     }
     
     func addBlogerObservers() {
         blogerFM.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
-        blogerFM.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
-        blogerFM.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
         blogerFM.currentItem?.addObserver(self, forKeyPath: "timedMetadata", options: .new, context: nil)
         
     }

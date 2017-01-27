@@ -28,8 +28,13 @@ class PreferencesWindowController: NSWindowController {
         
     }
     @IBAction func SaveButton(_ sender: NSButton) {
-        ratePreference = (changeRate.selectedCell()?.title)!
-        restartBloger()
+        if ratePreference != (changeRate.selectedCell()?.title)!{
+            ratePreference = (changeRate.selectedCell()?.title)!
+            restartBloger()
+            blogerNotification(notify: NSLocalizedString("Changerate", comment: "Rate has changed") + "\(ratePreference) kb/s")
+        }else{
+            blogerNotification(notify: NSLocalizedString("Remainrate", comment: "Rate didn't change") + "\(ratePreference) kb/s")
+        }
         self.close()
     }
     

@@ -1,0 +1,24 @@
+
+/* Class = "NSMenuItem"; title = "Preferences"; ObjectID = "7C6-1c-9x5"; */
+"7C6-1c-9x5.title" = "Налаштування";
+
+/* Class = "NSMenuItem"; title = "volumeBar"; ObjectID = "9wv-qh-BDN"; */
+"9wv-qh-BDN.title" = "volumeBar";
+
+/* Class = "NSMenuItem"; title = "BlogerFm Radio"; ObjectID = "VvD-mF-eLK"; */
+"VvD-mF-eLK.title" = "BlogerFm Радіо";
+
+/* Class = "NSMenuItem"; title = "PlayPauseBar"; ObjectID = "Yec-Fn-Inv"; */
+"Yec-Fn-Inv.title" = "PlayPauseBar";
+
+/* Class = "NSMenuItem"; title = "Current Title"; ObjectID = "ZeH-t1-Z1q"; */
+"ZeH-t1-Z1q.title" = "Поточна пісня";
+
+/* Class = "NSTextFieldCell"; title = "Mute/Unmute"; ObjectID = "neb-P3-qNO"; */
+"neb-P3-qNO.title" = "Звук вімк/вимк";
+
+/* Class = "NSTextFieldCell"; title = "Stop/Play"; ObjectID = "s5E-UN-7OV"; */
+"s5E-UN-7OV.title" = "Стоп/Пуск";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "uax-eC-xoe"; */
+"uax-eC-xoe.title" = "Вихід";

@@ -13,23 +13,23 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="BlogerFM_2" customModuleProvider="target"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="BlogerFM" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="qPS-hW-7ef" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="BlogerFM_2" customModuleProvider="target">
+        <customObject id="qPS-hW-7ef" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="BlogerFM" customModuleProvider="target">
             <connections>
                 <outlet property="muteButtonOutlet" destination="dgs-6D-y5Q" id="ZQd-xI-alq"/>
                 <outlet property="playPauseButtonOutlet" destination="BXv-Rt-bGO" id="uhN-bb-HL1"/>
                 <outlet property="playPauseOutlet" destination="R41-Sw-1un" id="3lY-kr-yD9"/>
                 <outlet property="statusMenu" destination="cfp-Yq-dKC" id="PNA-tz-HbM"/>
-                <outlet property="textOutlet" destination="F3E-Lz-U3B" id="tKL-nO-VIL"/>
                 <outlet property="volumeBarOutlet" destination="UiP-TX-fKh" id="B8P-DX-Ps1"/>
             </connections>
         </customObject>
         <menu id="cfp-Yq-dKC">
             <items>
-                <menuItem title="text" id="mAZ-Cv-whK">
+                <menuItem title="BlogerFm Radio" id="VvD-mF-eLK">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="62x-ZZ-fnv"/>
                 <menuItem title="PlayPauseBar" id="Yec-Fn-Inv">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
@@ -57,22 +57,23 @@
                     </connections>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="166.5" y="157.5"/>
         </menu>
-        <slider verticalHuggingPriority="750" id="UiP-TX-fKh">
-            <rect key="frame" x="0.0" y="0.0" width="140" height="23"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="e28-Zz-r3r"/>
+        <slider verticalHuggingPriority="750" misplaced="YES" id="UiP-TX-fKh">
+            <rect key="frame" x="0.0" y="0.0" width="143" height="19"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <sliderCell key="cell" lineBreakMode="charWrapping" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="e28-Zz-r3r"/>
             <connections>
                 <action selector="volumeBar:" target="qPS-hW-7ef" id="kxR-GU-NaK"/>
             </connections>
-            <point key="canvasLocation" x="8" y="-127"/>
+            <point key="canvasLocation" x="132.5" y="4.5"/>
         </slider>
-        <customView id="R41-Sw-1un" userLabel="PausePlayView">
-            <rect key="frame" x="0.0" y="0.0" width="143" height="34"/>
+        <customView misplaced="YES" id="R41-Sw-1un" userLabel="PausePlayView">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="47"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" misplaced="YES" mirrorLayoutDirectionWhenInternationalizing="never" id="vQD-kC-oVi">
-                    <rect key="frame" x="96" y="7" width="25" height="19"/>
+                    <rect key="frame" x="121" y="8" width="25" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Stop" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="BXv-Rt-bGO">
                         <behavior key="behavior" lightByContents="YES"/>
@@ -83,7 +84,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" misplaced="YES" id="dgs-6D-y5Q">
-                    <rect key="frame" x="20" y="6" width="25" height="20"/>
+                    <rect key="frame" x="39" y="8" width="25" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="UnMute" imagePosition="overlaps" alignment="center" alternateImage="Mute" imageScaling="proportionallyDown" inset="2" id="hJB-SC-qZz">
                         <behavior key="behavior" lightByContents="YES"/>
@@ -93,24 +94,8 @@
                         <action selector="muteButton:" target="qPS-hW-7ef" id="ZHo-7m-oeS"/>
                     </connections>
                 </button>
-            </subviews>
-            <point key="canvasLocation" x="-29.5" y="16"/>
-        </customView>
-        <tableCellView misplaced="YES" id="F3E-Lz-U3B">
-            <rect key="frame" x="0.0" y="0.0" width="145" height="20"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="8iy-E4-Rma">
-                    <rect key="frame" x="2" y="3" width="76" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mute/Unmute" id="neb-P3-qNO">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="USK-aC-kUV">
-                    <rect key="frame" x="82" y="1" width="62" height="17"/>
+                    <rect key="frame" x="107" y="30" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stop/Play" id="s5E-UN-7OV">
                         <font key="font" metaFont="smallSystem"/>
@@ -118,9 +103,18 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="8iy-E4-Rma">
+                    <rect key="frame" x="18" y="32" width="90" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mute/Unmute" id="neb-P3-qNO">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="-29.5" y="-57"/>
-        </tableCellView>
+            <point key="canvasLocation" x="148" y="-68.5"/>
+        </customView>
     </objects>
     <resources>
         <image name="Mute" width="32" height="32"/>

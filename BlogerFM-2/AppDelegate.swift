@@ -9,10 +9,14 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        NSUserNotificationCenter.default.delegate = self
+    }
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

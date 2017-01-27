@@ -1,0 +1,21 @@
+
+/* Class = "NSButtonCell"; title = "64"; ObjectID = "0CH-Uf-gB5"; */
+"0CH-Uf-gB5.title" = "64";
+
+/* Class = "NSButtonCell"; title = "Save"; ObjectID = "8e7-Hz-xRO"; */
+"8e7-Hz-xRO.title" = "Зберегти";
+
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Налаштування";
+
+/* Class = "NSButtonCell"; title = "256"; ObjectID = "jvX-fr-xya"; */
+"jvX-fr-xya.title" = "256";
+
+/* Class = "NSTextFieldCell"; title = "Choose rate of radio:"; ObjectID = "qyG-Ry-XrA"; */
+"qyG-Ry-XrA.title" = "Виберіть якість потоку:";
+
+/* Class = "NSButtonCell"; title = "128"; ObjectID = "tah-AF-Sj5"; */
+"tah-AF-Sj5.title" = "128";
+
+/* Class = "NSButtonCell"; title = "Radio"; ObjectID = "zZ7-Oz-j9E"; */
+"zZ7-Oz-j9E.title" = "Radio";

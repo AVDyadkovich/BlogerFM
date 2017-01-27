@@ -7,24 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		552477851E2637F6008B538E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 552477871E2637F6008B538E /* Localizable.strings */; };
+		552477991E28E68F008B538E /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5524779B1E28E68F008B538E /* PreferencesWindowController.xib */; };
 		552F37811DBA43EA00B60BAA /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F37801DBA43EA00B60BAA /* StatusMenuController.swift */; };
 		5538AE9B1DBD58AF00C28C43 /* BlogerFM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538AE9A1DBD58AF00C28C43 /* BlogerFM.swift */; };
 		5550BF481DDF2DBF00E622AE /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5550BF461DDF2DBF00E622AE /* PreferencesWindowController.swift */; };
-		5550BF491DDF2DBF00E622AE /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5550BF471DDF2DBF00E622AE /* PreferencesWindowController.xib */; };
 		55EE5DEC1DB9490500D86D49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE5DEB1DB9490500D86D49 /* AppDelegate.swift */; };
 		55EE5DEE1DB9490500D86D49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EE5DED1DB9490500D86D49 /* Assets.xcassets */; };
 		55EE5DF11DB9490500D86D49 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55EE5DEF1DB9490500D86D49 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		552477761E262A0F008B538E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		552477771E262B23008B538E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		552477861E2637F6008B538E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		552477881E2637F7008B538E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		552477971E2827D2008B538E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		552477981E2827D2008B538E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5524779A1E28E68F008B538E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindowController.xib; sourceTree = "<group>"; };
+		5524779D1E28E691008B538E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PreferencesWindowController.strings; sourceTree = "<group>"; };
+		5524779F1E28E692008B538E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/PreferencesWindowController.strings; sourceTree = "<group>"; };
 		552F37801DBA43EA00B60BAA /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		5538AE9A1DBD58AF00C28C43 /* BlogerFM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogerFM.swift; sourceTree = "<group>"; };
 		5550BF461DDF2DBF00E622AE /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
-		5550BF471DDF2DBF00E622AE /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
-		55EE5DE81DB9490500D86D49 /* BlogerFM-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BlogerFM-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55EE5DE81DB9490500D86D49 /* BlogerFM-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "BlogerFM-2.app"; path = BlogerFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55EE5DEB1DB9490500D86D49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55EE5DED1DB9490500D86D49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		55EE5DF01DB9490500D86D49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		55EE5DF21DB9490500D86D49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,11 +68,12 @@
 			children = (
 				55EE5DEB1DB9490500D86D49 /* AppDelegate.swift */,
 				552F37801DBA43EA00B60BAA /* StatusMenuController.swift */,
+				552477871E2637F6008B538E /* Localizable.strings */,
 				55EE5DED1DB9490500D86D49 /* Assets.xcassets */,
 				55EE5DEF1DB9490500D86D49 /* MainMenu.xib */,
 				5538AE9A1DBD58AF00C28C43 /* BlogerFM.swift */,
 				5550BF461DDF2DBF00E622AE /* PreferencesWindowController.swift */,
-				5550BF471DDF2DBF00E622AE /* PreferencesWindowController.xib */,
+				5524779B1E28E68F008B538E /* PreferencesWindowController.xib */,
 				55EE5DF21DB9490500D86D49 /* Info.plist */,
 			);
 			path = "BlogerFM-2";
@@ -73,9 +82,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		55EE5DE71DB9490500D86D49 /* BlogerFM-2 */ = {
+		55EE5DE71DB9490500D86D49 /* BlogerFM */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 55EE5DF51DB9490500D86D49 /* Build configuration list for PBXNativeTarget "BlogerFM-2" */;
+			buildConfigurationList = 55EE5DF51DB9490500D86D49 /* Build configuration list for PBXNativeTarget "BlogerFM" */;
 			buildPhases = (
 				55EE5DE41DB9490500D86D49 /* Sources */,
 				55EE5DE51DB9490500D86D49 /* Frameworks */,
@@ -85,7 +94,7 @@
 			);
 			dependencies = (
 			);
-			name = "BlogerFM-2";
+			name = BlogerFM;
 			productName = "BlogerFM-2";
 			productReference = 55EE5DE81DB9490500D86D49 /* BlogerFM-2.app */;
 			productType = "com.apple.product-type.application";
@@ -96,7 +105,7 @@
 		55EE5DE01DB9490500D86D49 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Andy;
 				TargetAttributes = {
@@ -111,15 +120,16 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ru,
+				uk,
 			);
 			mainGroup = 55EE5DDF1DB9490500D86D49;
 			productRefGroup = 55EE5DE91DB9490500D86D49 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				55EE5DE71DB9490500D86D49 /* BlogerFM-2 */,
+				55EE5DE71DB9490500D86D49 /* BlogerFM */,
 			);
 		};
 /* End PBXProject section */
@@ -129,7 +139,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5550BF491DDF2DBF00E622AE /* PreferencesWindowController.xib in Resources */,
+				552477991E28E68F008B538E /* PreferencesWindowController.xib in Resources */,
+				552477851E2637F6008B538E /* Localizable.strings in Resources */,
 				55EE5DEE1DB9490500D86D49 /* Assets.xcassets in Resources */,
 				55EE5DF11DB9490500D86D49 /* MainMenu.xib in Resources */,
 			);
@@ -152,10 +163,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		552477871E2637F6008B538E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				552477861E2637F6008B538E /* Base */,
+				552477881E2637F7008B538E /* ru */,
+				552477981E2827D2008B538E /* uk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		5524779B1E28E68F008B538E /* PreferencesWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5524779A1E28E68F008B538E /* Base */,
+				5524779D1E28E691008B538E /* ru */,
+				5524779F1E28E692008B538E /* uk */,
+			);
+			name = PreferencesWindowController.xib;
+			sourceTree = "<group>";
+		};
 		55EE5DEF1DB9490500D86D49 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				55EE5DF01DB9490500D86D49 /* Base */,
+				552477761E262A0F008B538E /* Base */,
+				552477771E262B23008B538E /* ru */,
+				552477971E2827D2008B538E /* uk */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -167,6 +200,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -217,6 +251,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -262,7 +297,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "BlogerFM-2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Andy.BlogerFM-2";
+				PRODUCT_BUNDLE_IDENTIFIER = Andy.BlogerFM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -275,7 +310,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "BlogerFM-2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Andy.BlogerFM-2";
+				PRODUCT_BUNDLE_IDENTIFIER = Andy.BlogerFM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -293,7 +328,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		55EE5DF51DB9490500D86D49 /* Build configuration list for PBXNativeTarget "BlogerFM-2" */ = {
+		55EE5DF51DB9490500D86D49 /* Build configuration list for PBXNativeTarget "BlogerFM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55EE5DF61DB9490500D86D49 /* Debug */,
