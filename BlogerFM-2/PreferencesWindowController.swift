@@ -27,11 +27,12 @@ class PreferencesWindowController: NSWindowController {
         NSApp.activate(ignoringOtherApps: true)
         
     }
+    // Implement of chenge and save method.
     @IBAction func SaveButton(_ sender: NSButton) {
         if ratePreference != (changeRate.selectedCell()?.title)!{
             ratePreference = (changeRate.selectedCell()?.title)!
             restartBloger()
-            blogerNotification(notify: NSLocalizedString("Changerate", comment: "Rate has changed") + "\(ratePreference) kb/s")
+            blogerNotification(notify: NSLocalizedString("Changerate", comment: "Rate has been changed") + "\(ratePreference) kb/s")
         }else{
             blogerNotification(notify: NSLocalizedString("Remainrate", comment: "Rate didn't change") + "\(ratePreference) kb/s")
         }

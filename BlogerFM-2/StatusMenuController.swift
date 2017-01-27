@@ -38,17 +38,19 @@ class StatusMenuController: NSObject{
         volumeBarMenu.view = volumeBarOutlet
         blogerFM.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
         blogerFM.play()
-       
+        
+        //Volume bar and current status.
         if UserDefaults.standard.float(forKey: "volume") != 0 {
         volumeBarOutlet.floatValue = UserDefaults.standard.float(forKey: "volume")
         }
         blogerFM.volume = volumeBarOutlet.floatValue
         playPauseMenu = statusMenu.item(withTitle: "PlayPauseBar")
         playPauseMenu.view = playPauseOutlet
-        addBlogerObservers()
+       
+        addBlogerObservers() // Adding observers
         
     }
-    
+    // Initializing volume bar.
     @IBAction func volumeBar(_ sender: NSSlider) {
             if muteButtonOutlet.state == 1 {
                 let imgBut:NSImage? = NSImage(named: "UnMute")
@@ -58,6 +60,7 @@ class StatusMenuController: NSObject{
         blogerFM.volume = volumeBarOutlet.floatValue
         changeMute()
     }
+    // Change Mute method.
     func changeMute () {
         if blogerFM.volume == 0.0{
             let imgBut:NSImage? = NSImage(named: "Mute")
@@ -66,11 +69,12 @@ class StatusMenuController: NSObject{
         }
     }
     
-    
+    // Showing current title by button.
     @IBAction func CurrentTitle(_ sender: Any) {
         NSUserNotificationCenter.default.deliver(notification)
      
     }
+    
     @IBAction func playPauseButton(_ sender: NSButton) {
         
         switch sender.state {
@@ -89,6 +93,8 @@ class StatusMenuController: NSObject{
         
         
     }
+    
+    //Mute button
     @IBAction func muteButton(_ sender: NSButton) {
         
         if blogerFM.volume == 0.0{
@@ -112,6 +118,8 @@ class StatusMenuController: NSObject{
 
         
     }
+    
+    // Oppen Preferencess window.
     @IBAction func blogerPreferencessAction(_ sender: NSMenuItem) {
         if preferencesWindow.isWindowLoaded{
             preferencesWindow.windowDidLoad()
@@ -147,7 +155,6 @@ class StatusMenuController: NSObject{
         case "playbackBufferEmpty" :
             if blogerFM.currentItem!.isPlaybackBufferEmpty {
                 blogerNotification(notify: NSLocalizedString("Buffer", comment: "Error has an accured"))
-                
             }
             
         case "timedMetadata" :
@@ -157,11 +164,9 @@ class StatusMenuController: NSObject{
                 let encodeData = data.data(using: .isoLatin1)!
                 let decodeData = NSString(data: encodeData, encoding: String.Encoding.windowsCP1251.rawValue)!
                 blogerNotification(notify: String(decodeData))
-                
                 }
             } else {
                 blogerNotification(notify: NSLocalizedString("Error", comment: "Error has an accured"))
-
             }
         default:
             print ("Wrong key for observer")
@@ -180,7 +185,5 @@ class StatusMenuController: NSObject{
     func addBlogerObservers() {
         blogerFM.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
         blogerFM.currentItem?.addObserver(self, forKeyPath: "timedMetadata", options: .new, context: nil)
-        
     }
-    
 }

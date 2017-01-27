@@ -21,17 +21,12 @@ enum BlogerFMUrl: String{
     case url256 = "http://radio.bloger.fm:8000/blogerfm-256"
 }
 
-//var url256 = "http://radio.bloger.fm:8000/blogerfm-256"
-
-
 var blogerFMUrl = URL(string: changeRateUrl(rate: ratePreference))
-
-
-//Initialize of player with Item
 
 var blogerPlayerItem = AVPlayerItem(url: blogerFMUrl!)
 
 var blogerFM = AVPlayer(playerItem: blogerPlayerItem)
+//Changing rate form preferencess method.
 func changeRateUrl (rate: String) -> String {
     switch rate{
         case "64": return BlogerFMUrl.url64.rawValue
@@ -40,7 +35,7 @@ func changeRateUrl (rate: String) -> String {
     default: return "Nil"
     }
 }
-
+//Restart player method
 func restartBloger (){
  
     blogerFMUrl = URL(string: changeRateUrl(rate: ratePreference))
@@ -48,7 +43,7 @@ func restartBloger (){
     blogerFM.replaceCurrentItem(with: blogerPlayerItem)
     StatusMenuController.awakeFromNib()
 }
-
+// Notification method for player. 
 func blogerNotification(notify:String) {
     notification.title = "BlogerFM"
     notification.informativeText = notify
