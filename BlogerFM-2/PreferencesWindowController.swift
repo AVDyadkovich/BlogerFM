@@ -27,7 +27,7 @@ class PreferencesWindowController: NSWindowController {
         NSApp.activate(ignoringOtherApps: true)
         
     }
-    // Implement of chenge and save method.
+    // Implement of change and save method.
     @IBAction func SaveButton(_ sender: NSButton) {
         if ratePreference != (changeRate.selectedCell()?.title)!{
             ratePreference = (changeRate.selectedCell()?.title)!
