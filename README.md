@@ -1,1 +1,1 @@
-# BlogerFM
+# BlogerFM for macOS
