@@ -9,108 +9,107 @@
 import Cocoa
 import AVFoundation
 
-class StatusMenuController: NSObject{
+class StatusMenuController: NSObject {
    // Initializing Outlets, Menus, Values
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var volumeBarOutlet: NSSlider!
     @IBOutlet weak var playPauseOutlet: NSView!
     @IBOutlet weak var playPauseButtonOutlet: NSButtonCell!
     @IBOutlet weak var muteButtonOutlet: NSButton!
+    @IBOutlet weak var textOutlet: NSTableCellView!
     
     var volumeBarMenu:NSMenuItem!
     var playPauseMenu:NSMenuItem!
     var preferencesWindow: PreferencesWindowController!
     var titleMenu: NSMenuItem!
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    //end Initialization block.
+    var textCell:NSMenuItem!
+
+    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
     override func awakeFromNib() {
-        // Initializing and configuring app.
         if UserDefaults.standard.string(forKey: "rate") == nil{
             UserDefaults.standard.set(128, forKey:"rate")
         }
-        let icon = NSImage(named:NSImage.Name(rawValue: "status"))
+        let icon = NSImage(named:"status")
         icon?.isTemplate = true
         preferencesWindow = PreferencesWindowController()
         statusItem.image = icon
         statusItem.menu = statusMenu
         volumeBarMenu = statusMenu.item(withTitle: "volumeBar")
         volumeBarMenu.view = volumeBarOutlet
-        blogerFM.currentItem?.canUseNetworkResourcesForLiveStreamingWhilePaused = true
+        textCell = statusMenu.item(withTitle: "text")
+        textCell.view = textOutlet
         blogerFM.play()
-        
-        //Volume bar and current status.
+    
+       
         if UserDefaults.standard.float(forKey: "volume") != 0 {
         volumeBarOutlet.floatValue = UserDefaults.standard.float(forKey: "volume")
         }
         blogerFM.volume = volumeBarOutlet.floatValue
         playPauseMenu = statusMenu.item(withTitle: "PlayPauseBar")
         playPauseMenu.view = playPauseOutlet
-       
-        addBlogerObservers() // Adding observers
+        
+       addBlogerObservers()
         
     }
-    // Initializing volume bar.
+    
     @IBAction func volumeBar(_ sender: NSSlider) {
-            if muteButtonOutlet.state.rawValue == 1 {
-                let imgBut:NSImage? = NSImage(named: NSImage.Name(rawValue: "UnMute"))
+            if muteButtonOutlet.state == 1 {
+                let imgBut:NSImage? = NSImage(named: "UnMute")
                 muteButtonOutlet.image = imgBut
-                muteButtonOutlet.state = NSControl.StateValue(rawValue: 0)
+                muteButtonOutlet.state = 0
             }
         blogerFM.volume = volumeBarOutlet.floatValue
         changeMute()
     }
-    // Change Mute method.
     func changeMute () {
         if blogerFM.volume == 0.0{
-            let imgBut:NSImage? = NSImage(named: NSImage.Name(rawValue: "Mute"))
+            let imgBut:NSImage? = NSImage(named: "Mute")
             muteButtonOutlet.image = imgBut
-            muteButtonOutlet.state = NSControl.StateValue(rawValue: 1)
+            muteButtonOutlet.state = 1
         }
     }
     
-    // Showing current title by button.
+    
     @IBAction func CurrentTitle(_ sender: Any) {
         NSUserNotificationCenter.default.deliver(notification)
      
     }
-    
     @IBAction func playPauseButton(_ sender: NSButton) {
         
         switch sender.state {
-        case NSControl.StateValue(rawValue: 1):
-            let imgBut:NSImage? = NSImage(named: NSImage.Name(rawValue: "Stop"))
+        case 1:
+            let imgBut:NSImage? = NSImage(named: "Stop")
             sender.image = imgBut
             blogerFM.volume = volumeBarOutlet.floatValue
             blogerFM.replaceCurrentItem(with: blogerPlayerItem)
             blogerFM.play()
-        case NSControl.StateValue(rawValue: 0):
-            let altImgBt:NSImage? = NSImage(named: NSImage.Name(rawValue: "Play"))
+        case 0:
+            let altImgBt:NSImage? = NSImage(named: "Play")
             sender.image = altImgBt
             blogerFM.replaceCurrentItem(with: nil)
+            //blogerFM.volume = 0.0
         default: break
         }
         
         
     }
-    
-    //Mute button
     @IBAction func muteButton(_ sender: NSButton) {
         
         if blogerFM.volume == 0.0{
-            sender.state = NSControl.StateValue(rawValue: 0)
+            sender.state = 0
         }else{
-            sender.state = NSControl.StateValue(rawValue: 1)
+            sender.state = 1
         }
         
         switch sender.state {
-        case NSControl.StateValue(rawValue: 0):
-            let imgBut:NSImage? = NSImage(named: NSImage.Name(rawValue: "UnMute"))
+        case 0:
+            let imgBut:NSImage? = NSImage(named: "UnMute")
             sender.image = imgBut
             blogerFM.volume = volumeBarOutlet.floatValue
             
-        case NSControl.StateValue(rawValue: 1):
-            let altImgBt:NSImage? = NSImage(named: NSImage.Name(rawValue: "Mute"))
+        case 1:
+            let altImgBt:NSImage? = NSImage(named: "Mute")
             sender.image = altImgBt
         blogerFM.volume = 0.0
         default: break
@@ -118,10 +117,9 @@ class StatusMenuController: NSObject{
 
         
     }
-    
-    // Oppen Preferencess window.
     @IBAction func blogerPreferencessAction(_ sender: NSMenuItem) {
         if preferencesWindow.isWindowLoaded{
+         //   preferencesWindow.close()
             preferencesWindow.windowDidLoad()
         }else{
         removeBlogerObservers()
@@ -133,7 +131,7 @@ class StatusMenuController: NSObject{
     @IBAction func quit(_ sender: NSMenuItem) {
         UserDefaults.standard.set(blogerFM.volume, forKey: "volume")
         UserDefaults.standard.set(ratePreference, forKey: "rate")
-        NSApplication.shared.terminate(self)
+        NSApplication.shared().terminate(self)
         
         
     }
@@ -154,22 +152,37 @@ class StatusMenuController: NSObject{
         switch tempKeyPath {
         case "playbackBufferEmpty" :
             if blogerFM.currentItem!.isPlaybackBufferEmpty {
-                blogerNotification(notify: NSLocalizedString("Buffer", comment: "Error has an accured"))
+                print("no buffer")
+                
             }
+            
+        case "playbackLikelyToKeepUp" :
+            if blogerFM.currentItem!.isPlaybackLikelyToKeepUp {
+                print("resume Play")
+     
+              
+            }
+        case "status" :
+            print (change!)
+            print(blogerFM.currentItem?.status.rawValue ?? 3)
             
         case "timedMetadata" :
             if blogerFM.currentItem?.timedMetadata != nil {
-                for item in (blogerFM.currentItem?.timedMetadata)! as [AVMetadataItem]{
-                    let data = String(describing: item.value!)
-                    blogerNotification(notify: String(describing: data))
+            for item in (blogerFM.currentItem?.timedMetadata)! as [AVMetadataItem]{
+                let data = String(describing: item.value!)
+                let encodeData = data.data(using: .isoLatin1)!
+                let decodeData = NSString(data: encodeData, encoding: String.Encoding.windowsCP1251.rawValue)!
+                blogerNotification(notify: String(decodeData))
+                
                 }
             } else {
                 blogerNotification(notify: NSLocalizedString("Error", comment: "Error has an accured"))
             }
         default:
-            print ("Wrong key for observer")
+            print ("Nothing here")
         }
     }
+    
     
     
     deinit {
@@ -177,11 +190,17 @@ class StatusMenuController: NSObject{
     }
     func removeBlogerObservers () {
         blogerFM.currentItem?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
+        blogerFM.currentItem?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+        blogerFM.currentItem?.removeObserver(self, forKeyPath: "status")
         blogerFM.currentItem?.removeObserver(self, forKeyPath: "timedMetadata")
     }
     
     func addBlogerObservers() {
         blogerFM.currentItem?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: .new, context: nil)
+        blogerFM.currentItem?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: .new, context: nil)
+        blogerFM.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
         blogerFM.currentItem?.addObserver(self, forKeyPath: "timedMetadata", options: .new, context: nil)
+        
     }
+    
 }

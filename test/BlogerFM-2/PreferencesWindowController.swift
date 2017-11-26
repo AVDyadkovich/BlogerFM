@@ -13,8 +13,8 @@ class PreferencesWindowController: NSWindowController {
     @IBOutlet weak var changeRate: NSMatrix!
     var statusController = StatusMenuController()
     
-    override var windowNibName: NSNib.Name?{
-        return NSNib.Name(rawValue: "PreferencesWindowController")
+    override var windowNibName: String!{
+        return "PreferencesWindowController"
     }
     
     override func windowDidLoad() {
@@ -27,15 +27,9 @@ class PreferencesWindowController: NSWindowController {
         NSApp.activate(ignoringOtherApps: true)
         
     }
-    // Implement of change and save method.
     @IBAction func SaveButton(_ sender: NSButton) {
-        if ratePreference != (changeRate.selectedCell()?.title)!{
-            ratePreference = (changeRate.selectedCell()?.title)!
-            restartBloger()
-            blogerNotification(notify: NSLocalizedString("Changerate", comment: "Rate has been changed") + "\(ratePreference) kb/s")
-        }else{
-            blogerNotification(notify: NSLocalizedString("Remainrate", comment: "Rate didn't change") + "\(ratePreference) kb/s")
-        }
+        ratePreference = (changeRate.selectedCell()?.title)!
+        restartBloger()
         self.close()
     }
     
